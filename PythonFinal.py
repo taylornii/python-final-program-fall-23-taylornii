@@ -167,17 +167,11 @@ class CashBudget:
                 index += 1
                 if index == 0:
                     first_entry = entry
-        # fill in holes with points
-        # index = -1
-        # for xpoint in x:
-        #     if xpoint != x[index+1]:
-        #         x2.append()
-
         beg_bal1 = first_entry.get_balance_before_transaction()
         position_index = 0
         for i in range(days_betw_dates(beg_date, end_date)):
             day_inserted = False
-            if len(xf) < days_betw_dates(beg_date, end_date) and x.count(position_index+1) == 0:
+            if len(x) < days_betw_dates(beg_date, end_date) and x.count(position_index+1) == 0:
                 x = insert_item_in_list(x, position_index+1, position_index)
                 day_inserted = True
                 if position_index == 0:
@@ -186,7 +180,6 @@ class CashBudget:
                     y = insert_item_in_list(y, y[position_index-1], position_index)
 
             position_index += 1
-
 
 
         print(f"Month Statistics ({beg_date} to {end_date})")
@@ -203,7 +196,6 @@ class CashBudget:
         print(x, y)
         # Plotting balances on y, against days in specified period on x
         plt.plot(x, y, marker=".")
-        # TODO: plot self.cash_goal as a line
         plt.xlabel('days')
         plt.ylabel('balance($)')
         return plt.show()
