@@ -76,6 +76,16 @@ class LineItem:
         return before_bal
 
 
+class Expense(LineItem):
+    def __init__(self, date="00-00-00", description="", amount=0.0, fixed_or_variable="", frequency=""):
+        super().__init__(date, description, amount, "expense", fixed_or_variable, frequency)
+
+
+class Income(LineItem):
+    def __init__(self, date="00-00-00", description="", amount=0.0, fixed_or_variable="", frequency=""):
+        super().__init__(date, description, amount, "income", fixed_or_variable, frequency)
+
+
 class CashBudget:
     def __init__(self, ledger=[], revenue=0.0, expenses=0.0):
         self.ledger = ledger
@@ -211,16 +221,6 @@ class CashBudget:
         self.display_stats(first_day_of_month(date_for_report), last_day_of_month(date_for_report))
 
 
-class Expense(LineItem):
-    def __init__(self, date="00-00-00", description="", amount=0.0, fixed_or_variable="", frequency=""):
-        super().__init__(date, description, amount, "expense", fixed_or_variable, frequency)
-
-
-class Income(LineItem):
-    def __init__(self, date="00-00-00", description="", amount=0.0, fixed_or_variable="", frequency=""):
-        super().__init__(date, description, amount, "income", fixed_or_variable, frequency)
-
-
 try:
     with (open(fileipath_excelsheet, 'r') as excelsheet):
         a_lines = excelsheet.readlines()  # reading in unsorted ledger
@@ -244,7 +244,5 @@ try:
         new_budget.populate_ledger(a_list)
         new_budget.generate_month_report_for("2021/04/15")
 
-except Exception as e:
-    print(f"An error occurred: {str(e)}")
 except Exception as e:
     print(f"An error occurred: {str(e)}")
