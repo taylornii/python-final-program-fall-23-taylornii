@@ -2,6 +2,7 @@
 # Name: Taylor Nii
 # Class: CIT-95
 # Date: 12-06-2023
+
 from datetime import date, timedelta
 import matplotlib.pyplot as plt
 import numpy as np
@@ -150,14 +151,10 @@ class CashBudget:
         self.cash_goal = np.round(amount,3)
 
     def display_stats(self, beg_date, end_date):
-    #     TODO: balances from beginning, add x days from beg to each line item, plot balances on y /x days on x
-    # maybe use days_betw_dates function
         self.set_xval(beg_date, end_date)
         print(self)
         x = []
         y = []
-        xf = []  # holes filled
-        yf = []  # holes filled
         index = -1
         for entry in self.ledger:
             # creates a list of balances within given beg & end date
@@ -167,6 +164,7 @@ class CashBudget:
                 index += 1
                 if index == 0:
                     first_entry = entry
+
         beg_bal1 = first_entry.get_balance_before_transaction()
         position_index = 0
         for i in range(days_betw_dates(beg_date, end_date)):
@@ -181,10 +179,13 @@ class CashBudget:
 
             position_index += 1
 
+        x = insert_item_in_list(x, 0, 0)
+        y = insert_item_in_list(y, beg_bal1, 0)
+
 
         print(f"Month Statistics ({beg_date} to {end_date})")
         beg_bal = beg_bal1
-        end_bal = y[index]
+        end_bal = y[len(y)-1]
         net_bal = np.round(end_bal - beg_bal1, 3)
         print("BEG BAL:", beg_bal)
         print("END BAL:", end_bal)
@@ -196,6 +197,7 @@ class CashBudget:
         print(x, y)
         # Plotting balances on y, against days in specified period on x
         plt.plot(x, y, marker=".")
+        # TODO: plot self.cash_goal as a line
         plt.xlabel('days')
         plt.ylabel('balance($)')
         return plt.show()
@@ -242,5 +244,7 @@ try:
         new_budget.populate_ledger(a_list)
         new_budget.generate_month_report_for("2021/04/15")
 
+except Exception as e:
+    print(f"An error occurred: {str(e)}")
 except Exception as e:
     print(f"An error occurred: {str(e)}")
