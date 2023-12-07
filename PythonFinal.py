@@ -15,7 +15,7 @@ def parse_date(date_str):
     """takes string date yy/mm/dd and return datetime date"""
     date_split = date_str.split("/")
     date_dict = {"year": date_split[0], "month": date_split[1], "day": date_split[2]}
-    for key in date_dict:  # part is item in list ["yy", "mm", "dd"]
+    for key in date_dict:
         if len(date_dict[key]) == 2 and key == "year":  # if year is 2 digits
             date_dict[key] = int("20" + date_dict[key])  # assuming no entries dated before year 2000 or after year 2099
         elif len(date_dict[key]) != 4 and key == "year":
