@@ -1,0 +1,19 @@
+date,description,amount,income/expense,fixed/variable,frequency
+21/12/15,salary,654.32,income,fixed,bimonthly
+21/04/01,salary,654.32,income,fixed,bimonthly
+21/04/05,grocery shopping,111.11,expense,variable,weekly
+21/04/10,dining out,80.00,expense,variable,weekly
+21/04/15,rent,1200.00,expense,fixed,monthly
+21/04/20,freelance gig,350.00,income,variable,monthly
+21/04/25,gasoline,40.00,expense,variable,biweekly
+21/05/01,health insurance,150.00,expense,fixed,monthly
+21/05/05,internet bill,50.00,expense,fixed,monthly
+21/05/10,gym membership,60.00,expense,fixed,monthly
+21/05/15,electricity bill,70.00,expense,fixed,monthly
+21/05/20,mobile phone bill,45.00,expense,fixed,monthly
+21/05/25,car maintenance,100.00,expense,variable,once
+,,,,,
+,,,,,
+,,,,,
+,,,,,
+,,,,,
